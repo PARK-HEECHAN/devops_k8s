@@ -13,7 +13,7 @@ spec:
   source:
     path: {{ $app.source.path }}
     repoURL: {{ $.Values.repoURL }}
-    targetRevision: HEAD
+    targetRevision: cicdstudy
     helm:
       valueFiles:
         - values.yaml
