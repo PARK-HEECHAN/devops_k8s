@@ -20,7 +20,7 @@ spec:
 {{- with  .Values.image.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}{{- end }}
-      imagePullPolicy: Always
+      imagePullPolicy: {{ .Values.image.imagePullPolicy }}
 
 ---
 
