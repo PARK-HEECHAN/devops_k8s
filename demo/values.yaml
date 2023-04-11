@@ -3,8 +3,8 @@ image:
   repository: 489527167655.dkr.ecr.ap-northeast-2.amazonaws.com/demo
   tag: 1.0.4
   imagePullSecrets:
-    - name: ecr-cred
-  imagePullPolicy: Always
+    - name: regcred
+  # imagePullPolicy: Always
 service:
   type: NodePort
   protocol: TCP
