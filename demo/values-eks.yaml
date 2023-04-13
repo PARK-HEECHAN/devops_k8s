@@ -2,8 +2,6 @@ replicas: 1
 image:
   repository: 489527167655.dkr.ecr.ap-northeast-2.amazonaws.com/demo
   tag: 1.0.9
-  imagePullSecrets:
-    - name: regcred
 service:
   type: NodePort
   protocol: TCP
