@@ -16,11 +16,42 @@ server:
     annotations:
       kubernetes.io/ingress.class: alb
       alb.ingress.kubernetes.io/scheme: internet-facing
-      alb.ingress.kubernetes.io/tags: Environment=dev,Name=argocd-alb
+      alb.ingress.kubernetes.io/tags: Environment=prod,Name=argocd-alb
   extraArgs:
     - --insecure
   config:
     accounts.admin: apiKey, login
+    repositories: |
+      - url: https://github.com/PARK-HEECHAN/devops_k8s.git
+      - url: https://github.com/PARK-HEECHAN/devops_sample_app_python.git
+    # dex.config: |
+    #   connectors:
+    #     # GitHub example
+    #     # clientSecret 사용 시 k8s secret으로 $dex.github.clientSecret # Alternatively $<some_K8S_secret>:dex.github.clientSecret
+    #     - type: github
+    #       id: github
+    #       name: GitHub
+    #       config:
+    #         clientID: b1817b6750da894f6417
+    #         clientSecret: f1c419d58325552c1f250ce5c55100531dc8ff5d
+    #         orgs:
+    #         - name: devops-test-gmlcks
+  rbacConfig:
+    policy.default: role:readonly
+    # policy.csv: |
+    #   p, role:local-user-admin, applications, *, */*, allow
+    #   g, test, role:local-user-admin
+    #   p, role:org-devops, applications, *, */*, allow
+    #   p, role:org-devops, clusters, *, */*, allow
+    #   p, role:org-devops, repositories, *, */*, allow
+    #   g, devops-test-gmlcks:devops, role:org-devops
+    #   p, role:local-user-admin, clusters, get, *, allow
+    #   p, role:local-user-admin, repositories, get, *, allow
+    #   p, role:local-user-admin, repositories, create, *, allow
+    #   p, role:local-user-admin, repositories, update, *, allow
+    #   p, role:local-user-admin, repositories, delete, *, allow
+    #   p, role:local-user-admin, logs, get, *, allow
+    #   p, role:local-user-admin, exec, create, */*, allow
 
 redis:
   enabled: true
