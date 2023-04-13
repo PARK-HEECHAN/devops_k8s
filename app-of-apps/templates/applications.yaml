@@ -16,7 +16,7 @@ spec:
     targetRevision: cicdstudy
     helm:
       valueFiles:
-        - values.yaml
+        - values-eks.yaml
   syncPolicy:
     automated:
       prune: true
